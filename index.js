@@ -53,8 +53,16 @@ function divide(pzc_param1, pzc_param2) {
   }
 }
 
-const modulo = (pzc_param1, pzc_param2) =>
-  Number(pzc_param1) % Number(pzc_param2);
+function modulo(pzc_param1, pzc_param2) {
+  if (Number(pzc_param2) === 0) {
+    return "Error: Division by zero!";
+  } else {
+    return Number(pzc_param1) % Number(pzc_param2);
+  }
+}
+
+// const modulo = (pzc_param1, pzc_param2) =>
+//   Number(pzc_param1) % Number(pzc_param2);
 
 const power = (pzc_param1, pzc_param2) =>
   Number(pzc_param1) ** Number(pzc_param2);
@@ -115,9 +123,11 @@ function mainCalculator() {
       console.log(`Parity : ${zc_result % 2 === 0 ? "Even" : "Odd"}`);
 
       if (zc_result > 0 && zc_result % 2 === 0) {
-        console.log(">> This is a positive and even number.");
+        console.log(">> This result is a positive and even number.");
       } else if (zc_result < 0 || zc_result % 2 !== 0) {
-        console.log(">> This is either negative or a floating-point number.");
+        console.log(
+          ">> This result is either negative or a floating-point number."
+        );
       }
     } else if (typeof zc_result === "string") {
       console.log(
@@ -127,7 +137,9 @@ function mainCalculator() {
     }
 
     console.log("\n─────────────────────────────");
-    zc_continue = prompt("Do you want to continue [yes/no]: ");
+    zc_continue = prompt(
+      "Continue ? Press any key to continue, or type 'no' to quit: "
+    );
     if (zc_continue === "no") {
       console.log("Calculator session ended. Goodbye!");
       break;
